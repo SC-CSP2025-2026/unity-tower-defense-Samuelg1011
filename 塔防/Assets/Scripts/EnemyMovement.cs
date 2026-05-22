@@ -20,10 +20,12 @@ public class EnemyMovement : MonoBehaviour
         float distance = Vector3.Distance(transform.position, Target.transform.position);
         if (distance <= Mathf.Epsilon) 
         {
-            if (Target.Next == null) {
+            if (Target.Next == null)
+            {
                 return;
             }
             Target = Target.Next;
+            transform.LookAt(Target.transform);
         }
     }
 }
