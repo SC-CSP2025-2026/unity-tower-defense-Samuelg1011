@@ -333,6 +333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 815889047561947075}
   - component: {fileID: -445515746035189397}
+  - component: {fileID: 6219149502842202326}
   m_Layer: 0
   m_Name: "\u70AE\u5854"
   m_TagString: Untagged
@@ -371,3 +372,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <AoE>k__BackingField: {fileID: 789909418560327844}
   <Model>k__BackingField: {fileID: 3828479833894469575}
+--- !u!114 &6219149502842202326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5569855308001834184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ffdde25b025b74b8c7942c52b4d18f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <AoE>k__BackingField: {fileID: 789909418560327844}
+  <ProjectilePrefab>k__BackingField: {fileID: 7223155866196926478, guid: d85123be2137ebb4294a02092ffd682b, type: 3}
+  <CooldownTime>k__BackingField: 3
+  <IsCoolingDown>k__BackingField: 0
