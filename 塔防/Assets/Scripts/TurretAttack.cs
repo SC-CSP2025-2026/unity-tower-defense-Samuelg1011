@@ -36,6 +36,6 @@ public class TurretAttack : MonoBehaviour
     {
         Projectile newProjectile = Instantiate(ProjectilePrefab);
         newProjectile.transform.position = transform.position;
-        newProjectile.Target = AoE.Targets[0];
+        newProjectile.Target = AoE.Targets[0].transform;
     }
 }
