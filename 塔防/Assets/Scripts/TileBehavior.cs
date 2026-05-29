@@ -5,7 +5,7 @@ public class TileBehavior : MonoBehaviour
 {
 
     [field: SerializeField]
-    public bool IsOccupied { get; private set; } = false;
+    public bool IsOccupied { get; set; } = false;
 
     [field: SerializeField]
     public UnityEvent<TileBehavior> OnCursorEnter;
