@@ -131,3 +131,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790ee86cf52c1c140a67c5aa28d305a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <TargetGrid>k__BackingField: {fileID: 0}
+  <Model>k__BackingField: {fileID: 1348958183115487993}
