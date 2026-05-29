@@ -13,6 +13,9 @@ public class TileBehavior : MonoBehaviour
     [field: SerializeField]
     public UnityEvent<TileBehavior> OnCursorExit;
 
+    [field: SerializeField]
+    public UnityEvent<TileBehavior> OnCursorClicked;
+
     public void NotifyCursorEnter()
     {
         OnCursorEnter.Invoke(this);
@@ -21,5 +24,10 @@ public class TileBehavior : MonoBehaviour
     public void NotifyCursorExit()
     {
         OnCursorExit.Invoke(this);
+    }
+
+    public void NotifyCursorClicked()
+    {
+        OnCursorClicked.Invoke(this);
     }
 }
