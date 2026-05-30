@@ -1,7 +1,11 @@
 using UnityEngine;
 
-public class TurrentSpawner : MonoBehaviour
+public class BuildingSpawner : MonoBehaviour
 {
+
+    [field: SerializeField]
+    public BuildingData Selected { get; set; }
+     
     [field: SerializeField]
     public GameObject TargetGrid { get; private set; }
 
@@ -25,6 +29,7 @@ public class TurrentSpawner : MonoBehaviour
 
     public void ListenToTilesIn(GameObject grid)
     {
+
         foreach (TileBehavior tile in grid.GetComponentsInChildren<TileBehavior>())
         {
             tile.OnCursorEnter.AddListener(ShowInfo);
@@ -41,10 +46,10 @@ public class TurrentSpawner : MonoBehaviour
         }
         if (CanSpawn(tileBehavior))
         {
-            GameObject newTurret = Instantiate(TurretPrefab, Controller.transform);
+            GameObject newTurret = Instantiate(Selected.BuildingPrefab, Controller.transform);
             newTurret.transform.position = tileBehavior.transform.position;
             tileBehavior.IsOccupied = true;
-            Controller.Gold -= 50;
+            Controller.Gold -= Selected.Cost;
             gameObject.SetActive(false);
         }
     }
@@ -66,7 +71,7 @@ public class TurrentSpawner : MonoBehaviour
             return false;
         }
 
-        if (Controller.Gold < 50)
+        if (Controller.Gold < Selected.Cost)
         {
             return false;
         }
@@ -80,13 +85,32 @@ public class TurrentSpawner : MonoBehaviour
         {
             Controller.InfoLabel.text = "Cannot build here";
         }
-        else if (Controller.Gold < 50)
+        else if (Controller.Gold < Selected.Cost)
         {
             Controller.InfoLabel.text = "<color=red>Not Enough</color>";
         }
         else 
         {
-            Controller.InfoLabel.text = "50 Gold - Place Turret";
+            if(Selected.Cost == 50)
+           {
+             Controller.InfoLabel.text = "50 Gold - Place Turret";
+           }
+           else if(Selected.Cost == 80)
+           {
+             Controller.InfoLabel.text = "80 Gold - Place Turret";
+           }
+           else if(Selected.Cost == 30)
+           {
+             Controller.InfoLabel.text = "30 Gold - Place Turret";
+           }
+            else if(Selected.Cost == 150)
+           {
+             Controller.InfoLabel.text = "150 Gold - Place Turret";
+           }
+            else if(Selected.Cost == 60)
+           {
+             Controller.InfoLabel.text = "60 Gold - Place Turret";
+           }
         }
     }
 

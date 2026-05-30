@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf916a49dc2cc246850cc04eb59ce87, type: 3}
+  m_Name: GoldData
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: Gold Generator
+  <Cost>k__BackingField: 30
+  <BuildingPrefab>k__BackingField: {fileID: 5639466903875279046, guid: e4a47b3a041bc6d479566a85d082661e, type: 3}

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Delay>k__BackingField: 2
-  <Gold>k__BackingField: 1
+  <Gold>k__BackingField: 25
   <Controller>k__BackingField: {fileID: 0}
 --- !u!1 &8418414303692418838
 GameObject:
