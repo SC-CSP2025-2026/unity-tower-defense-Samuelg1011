@@ -35,9 +35,13 @@ public class TurrentSpawner : MonoBehaviour
         {
             return;
         }
-        GameObject newTurret = Instantiate(TurretPrefab);
-        newTurret.transform.position = tileBehavior.transform.position;
-        tileBehavior.IsOccupied = true;
+        if (CanSpawn(tileBehavior))
+        {
+            GameObject newTurret = Instantiate(TurretPrefab);
+            newTurret.transform.position = tileBehavior.transform.position;
+            tileBehavior.IsOccupied = true;
+            Controller.Gold -= 50;
+        }
     }
 
     public void StopListeningToTilesIn(GameObject grid)
@@ -45,6 +49,37 @@ public class TurrentSpawner : MonoBehaviour
         foreach (TileBehavior tile in grid.GetComponentsInChildren<TileBehavior>())
         {
             tile.OnCursorClicked.RemoveListener(SpawnTurret);
+        }
+    }
+
+    public bool CanSpawn(TileBehavior tileBehavior)
+    {
+        if(tileBehavior.IsOccupied)
+        {
+            return false;
+        }
+
+        if (Controller.Gold < 50)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public void ShowInfo(TileBehavior tileBehavior)
+    {
+        if (tileBehavior.IsOccupied)
+        {
+            Controller.InfoLabel.text = "Cannot build here";
+        }
+        else if (Controller.Gold < 50)
+        {
+            Controller.InfoLabel.text = "<color=red>Not Enough</color>";
+        }
+        else 
+        {
+            Controller.InfoLabel.text = "50 Gold - Place Turret";
         }
     }
 }
