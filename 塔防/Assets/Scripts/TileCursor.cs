@@ -40,8 +40,13 @@ public void ListenToTilesIn(GameObject grid)
 
     public void StopListeningToTilesIn(GameObject grid)
     {
+        if (grid == null )
+        {
+            return;
+        }
         foreach(TileBehavior tile in grid.GetComponentsInChildren<TileBehavior>())
         {
+             
             tile.OnCursorEnter.RemoveListener(HandleTileEntered);
             tile.OnCursorExit.RemoveListener(HandleTileExited);
         }
