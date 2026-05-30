@@ -13,11 +13,13 @@ public class TurrentSpawner : MonoBehaviour
 
     void OnEnable()
     {
+        Controller.InfoLabel.text = "Select a Tile";
         ListenToTilesIn(TargetGrid);
     }
 
     void OnDisable()
     {
+        Controller.InfoLabel.text = "Click Build to Place a Turret";
         StopListeningToTilesIn(TargetGrid);
     }
 
@@ -25,6 +27,8 @@ public class TurrentSpawner : MonoBehaviour
     {
         foreach (TileBehavior tile in grid.GetComponentsInChildren<TileBehavior>())
         {
+            tile.OnCursorEnter.AddListener(ShowInfo);
+            tile.OnCursorExit.AddListener(HandleTileExited);
             tile.OnCursorClicked.AddListener(SpawnTurret);
         }
     }
@@ -41,6 +45,7 @@ public class TurrentSpawner : MonoBehaviour
             newTurret.transform.position = tileBehavior.transform.position;
             tileBehavior.IsOccupied = true;
             Controller.Gold -= 50;
+            gameObject.SetActive(false);
         }
     }
 
@@ -48,6 +53,8 @@ public class TurrentSpawner : MonoBehaviour
     {
         foreach (TileBehavior tile in grid.GetComponentsInChildren<TileBehavior>())
         {
+            tile.OnCursorEnter.RemoveListener(ShowInfo);
+            tile.OnCursorExit.RemoveListener(HandleTileExited);
             tile.OnCursorClicked.RemoveListener(SpawnTurret);
         }
     }
@@ -81,5 +88,10 @@ public class TurrentSpawner : MonoBehaviour
         {
             Controller.InfoLabel.text = "50 Gold - Place Turret";
         }
+    }
+
+    public void HandleTileExited(TileBehavior tileBehavior)
+    {
+        Controller.InfoLabel.text = "Select a Tile";
     }
 }
