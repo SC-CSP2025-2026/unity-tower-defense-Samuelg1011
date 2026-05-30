@@ -1,0 +1,22 @@
+using UnityEngine;
+using UnityEngine.Events;
+
+public class TowerCollision : MonoBehaviour
+{
+    [field: SerializeField]
+    public UnityEvent<EnemyAttack> OnEnemyHit { get; private set; }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other);
+
+        EnemyAttack enemyAttack = other.GetComponentInParent<EnemyAttack>();
+
+        if (enemyAttack == null)
+        {
+            return;
+        }
+
+        OnEnemyHit.Invoke(enemyAttack);
+    }
+}
